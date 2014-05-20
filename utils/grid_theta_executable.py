@@ -13,9 +13,9 @@ print 'Processing index = ' + str(index)
 
 
 # Unpack the configs
-s = 'tar -zxvf analysis.tgz'
-print 'executing ' + s
-subprocess.call( [s], shell=True )
+#s = 'tar -zxvf analysis.tgz'
+#print 'executing ' + s
+#subprocess.call( [s], shell=True )
 
 
 # Get the analysis files
@@ -23,15 +23,15 @@ anaFilesRaw = glob.glob( 'analysis/*.cfg' )
 anaFiles = sorted(anaFilesRaw)
 print 'All analysis files are : '
 print anaFiles
-# Pick the one we're running on here. 
+# Pick the one we're running on here.
 anaFile = anaFiles[index]
 print 'Will be processing ' + anaFile
 
 # Unpack the gridpack
-print 'Unpacking the theta gridpack'
-s = 'tar -zxvf gridpack.tgz'
-print 'executing ' + s
-subprocess.call( [s], shell=True )
+#print 'Unpacking the theta gridpack'
+#s = 'tar -zxvf gridpack.tgz'
+#print 'executing ' + s
+#subprocess.call( [s], shell=True )
 
 
 # Now get the name of the logfile and output file
@@ -53,21 +53,21 @@ print 'output name is ' + outName
 
 
 # Execute theta with the given config
-s = 'bin/theta ' + anaFile + ' > /dev/null'
+s = 'theta ' + anaFile + ' > /dev/null'
 print 'executing ' + s
 subprocess.call( [s], shell=True )
 
 # tar up the results
-print 'Tarring up the results to results.tgz'
-s = 'tar -cz ' + logName + ' ' + outName + ' > results.tgz'
-print 'executing ' + s
-subprocess.call( [s], shell=True )
+#print 'Tarring up the results to results.tgz'
+#s = 'tar -cz ' + logName + ' ' + outName + ' > results.tgz'
+#print 'executing ' + s
+#subprocess.call( [s], shell=True )
 
 # removing local copies of the debug log
-print 'Removing local copies the results to results.tgz'
-s = 'rm -rf ' + logName + ' ' + outName
-print 'executing ' + s
-subprocess.call( [s], shell=True )
+#print 'Removing local copies the results to results.tgz'
+#s = 'rm -rf ' + logName + ' ' + outName
+#print 'executing ' + s
+#subprocess.call( [s], shell=True )
 
 # List files
 print 'Listing directory'
